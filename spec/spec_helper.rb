@@ -11,9 +11,20 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'shoulda-matchers'
 require 'rack/test'
 require 'database_cleaner'
+require 'capybara'
+require 'capybara/dsl'
+require 'capybara/rspec'
+require 'debugger'
+require 'factory_girl'
+require 'factories'
+def app
+  Sinatra::Application
+end
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
+  config.include Capybara::DSL
+  config.include FactoryGirl::Syntax::Methods
   config.before(:suite) do
       DatabaseCleaner.strategy = :truncation
     end
@@ -26,7 +37,4 @@ RSpec.configure do |config|
       DatabaseCleaner.clean
     end
 end
-
-def app
-  Sinatra::Application
-end
+Capybara.app = app
