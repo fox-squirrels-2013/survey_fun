@@ -10,9 +10,21 @@ ENV['RACK_ENV'] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'shoulda-matchers'
 require 'rack/test'
+require 'database_cleaner'
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
+  config.before(:suite) do
+      DatabaseCleaner.strategy = :truncation
+    end
+
+    config.before(:each) do
+      DatabaseCleaner.start
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
+    end
 end
 
 def app

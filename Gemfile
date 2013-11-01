@@ -17,13 +17,17 @@ gem 'rake'
 
 gem 'shotgun'
 
+gem 'debugger'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
+  gem 'database_cleaner'
 end
 
 group :test, :development do
   gem 'rspec'
   gem 'factory_girl'
   gem 'faker'
+  gem 'jasmine'
 end
