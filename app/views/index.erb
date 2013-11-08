@@ -1,6 +1,6 @@
-<a href="surveys/new">New Survey</a>
+<a id="new_survey" href="#">New Survey</a>
 <ul>
   <% @surveys.each do |survey| %>
-    <li><a href="/surveys/<%= survey.id%>"><%= survey.name %></a></li>
+    <li><a class="single-serv" id="survey-<%= survey.id%>" href="#"><%= survey.name %></a></li>
   <% end %>
 </ul>
