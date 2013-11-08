@@ -1,7 +1,24 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $('#show_survey').on("click", function(event){
+    event.preventDefault()
+    $.ajax({
+      url: "surveys/new",
+      type: "GET",
+      data: {submit: true}
+    }).done(function(server_data) {
+      $('.new_form').html(server_data)
+    })
+  })
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-});
+  $(".container form").on("submit", function(event){
+    event.preventDefault()
+    var formData = $(this).serialize()
+    $.ajax({
+      url: "/surveys/create",
+      type: "POST",
+      data: formData
+    }).done(function(server_data) {
+      $('.survey_display').html(server_data)
+    })
+  })
+})

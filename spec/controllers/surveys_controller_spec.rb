@@ -18,7 +18,7 @@ describe "Surveys Controller", :type => :controller do
       }.to change(Survey, :count).by(1)
     end
 
-    it "doesn't creates a survey with invalid attributes" do
+    it "doesn't create a survey with invalid attributes" do
       expect {
         post '/surveys/create', :survey => {:description => "Some description"}
         expect(last_response).to_not be_redirect
