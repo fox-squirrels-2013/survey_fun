@@ -11,9 +11,7 @@
 * Modify a web app to use AJAX without breaking tests
 * Validate forms on the client using JavaScript
 * Create dynamic form elements using templates.
-* Understand database structure.
 
-1.
 ## Summary 
 This is a fully tested survey.  Your job is to make it client friendly. 
 
