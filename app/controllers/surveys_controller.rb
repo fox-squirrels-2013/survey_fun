@@ -4,7 +4,7 @@ get '/' do
 end
 
 get '/surveys/new' do
-  erb :new_survey
+  erb :new_survey#, layout: false
 end
 
 get '/surveys/:id' do
@@ -13,17 +13,11 @@ get '/surveys/:id' do
 end
 
 post '/surveys/create' do
-  # @survey = Survey.new params[:survey]
-  @survey = Survey.create(params[:survey])
+  @survey = Survey.new(params[:survey])
 
-  if request.xhr?
-    erb :_show_survey
+  if request.xhr? && @survey.save
+    erb :_show_survey, layout: false
   else
-    erb :new_survey
+    erb :_failed_submit, layout: false
   end
-  # if @survey.save
-  #   redirect '/'
-  # else
-  #   erb :new_survey
-  # end
 end

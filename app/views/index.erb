@@ -1,6 +1,7 @@
-<a href="surveys/new">New Survey</a>
+<a id="show_survey" href="surveys/new">New Survey</a>
+<div class="new_form"></div>
 <ul>
   <% @surveys.each do |survey| %>
-    <li><a href="/surveys/<%= survey.id%>"><%= survey.name %></a></li>
+    <li><a href="/surveys/<%= survey.id%>"><%= survey.name %></a> <button id="delete-<%= survey.id %>">Delete</button></li>
   <% end %>
 </ul>
