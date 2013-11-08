@@ -1,6 +1,6 @@
 <a href="surveys/new" id="new_survey">New Survey</a>
 <div id="survey_form"></div>
-<ul>
+<ul id="list">
   <% @surveys.each do |survey| %>
     <li><a href="/surveys/<%= survey.id%>"><%= survey.name %></a></li>
   <% end %>
