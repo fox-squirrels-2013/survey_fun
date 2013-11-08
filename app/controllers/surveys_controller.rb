@@ -9,14 +9,21 @@ end
 
 get '/surveys/:id' do
   @survey = Survey.find params[:id]
-  erb :show_survey
+  erb :_show_survey
 end
 
 post '/surveys/create' do
-  @survey = Survey.new params[:survey]
-  if @survey.save
-    redirect '/'
+  # @survey = Survey.new params[:survey]
+  @survey = Survey.create(params[:survey])
+
+  if request.xhr?
+    erb :_show_survey
   else
     erb :new_survey
   end
+  # if @survey.save
+  #   redirect '/'
+  # else
+  #   erb :new_survey
+  # end
 end
