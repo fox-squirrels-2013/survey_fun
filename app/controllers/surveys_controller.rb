@@ -13,10 +13,11 @@ get '/surveys/:id' do
 end
 
 post '/surveys/create' do
-  @survey = Survey.new params[:survey]
-  if @survey.save
-    redirect '/'
+  @survey = Survey.create params[:survey]
+  if request.xhr?
+      content_type :json
+      params.to_json
   else
-    erb :new_survey
+    redirect '/'
   end
 end
