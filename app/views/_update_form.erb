@@ -1,0 +1,10 @@
+<div class="container">
+
+  <form class="update_form" id="<%= @survey.id %>" action="/surveys/<%=@survey.id%>/update" method="post">
+    <input type="hidden" method="_method" value="puts">
+    <input name="name" type="text" value="<%= @survey.name %>">
+    <textarea name="description"><%= @survey.description %></textarea>
+    <input type="submit" value="Update">
+  </form>
+
+</div>

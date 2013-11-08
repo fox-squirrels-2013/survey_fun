@@ -2,6 +2,7 @@
 <div class="new_form"></div>
 <ul>
   <% @surveys.each do |survey| %>
-    <li><a href="/surveys/<%= survey.id%>"><%= survey.name %></a> <button id="delete-<%= survey.id %>">Delete</button></li>
+    <li><a href="/surveys/<%= survey.id%>"><%= survey.name %></a> <button class="delete" id="<%= survey.id %>-delete">Delete</button> <button class="update" id="<%= survey.id %>-update">Update</button></li>
+    <li><div id="update_form_<%= survey.id %>"></div></li>
   <% end %>
 </ul>

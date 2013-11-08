@@ -21,3 +21,21 @@ post '/surveys/create' do
     erb :_failed_submit, layout: false
   end
 end
+
+delete '/surveys/:id/delete' do
+  Survey.find_by_id(params[:id]).destroy
+end
+
+get '/surveys/:id/update' do
+  @survey = Survey.find_by_id(params[:id])
+  # @survey.name = params[:survey][:name]
+  # @survey.description
+  erb :_update_form
+end
+
+puts '/surveys/:id/update' do
+  @survey = Survey.find_by_id(params[:id])
+
+  @survey.update_attributes(name: params[:name], description: params[:description])
+
+end
