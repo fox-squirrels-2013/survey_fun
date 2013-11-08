@@ -4,7 +4,10 @@ get '/' do
 end
 
 get '/surveys/new' do
-  erb :new_survey
+  # if request.xhr?
+  # else
+  erb :new_survey, :layout => false;
+
 end
 
 get '/surveys/:id' do
