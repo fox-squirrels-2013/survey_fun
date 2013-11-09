@@ -28,14 +28,21 @@ $(document).ready(function() {
 function listenForm() {
 	$('#survey').on('submit', function(e){
 		e.preventDefault()
-		$.ajax({
-			url: this.action,
-  			type: this.method,
-			data: $('#survey').serialize()
-		}).done(function(server_data){
-			$('body').html(server_data)
-		}).fail(function(jqXHR, textStatus, errorThrown){
-			console.log("fail" + errorThrown);
-		});
+		var name = $("#new_surv_name").val()
+		var desc = $("#new_surv_desc").val()
+
+	    if ((name == null || name == '') || (desc == null || desc == '')) {
+	    	alert('please fill out all forms completely')
+	    } else {
+			$.ajax({
+				url: this.action,
+	  			type: this.method,
+				data: $(this).serialize() 
+			}).done(function(server_data){
+				$('body').html(server_data)
+			}).fail(function(jqXHR, textStatus, errorThrown){
+				console.log("fail" + errorThrown);
+			});
+		}
 	});
 }
